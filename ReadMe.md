@@ -10,7 +10,7 @@ npm i
 node .
 ```
 
-If the script is unable to find your games directory and appinfo cache, they can be specified in command line arguments
+If the script is unable to find your games directory and appinfo cache, they can be specified in command line arguments. For example:
 ```terminal
-node . /path/to/games/folder /path/to/appinfo.vdf
+node . ~/.steam/steam/steam/games ~/.steam/debian-installation/appcache/appinfo.vdf
 ```
