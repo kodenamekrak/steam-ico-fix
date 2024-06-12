@@ -2,9 +2,8 @@
 This fixes an issue where steam does not redownload the icon files after after reinstalling steam, causing desktop shortcuts to use the steam icon.
 
 ## Usage
-First install the `imagemagick` package, [nodejs](https://nodejs.org/en) and the script dependencies
+First install [nodejs](https://nodejs.org/en) and the script dependencies
 ```
-apt install imagemagick
 git clone https://github.com/kodenamekrak/steam-ico-fix
 cd steam-ico-fix
 npm i
