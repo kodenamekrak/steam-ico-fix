@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "binary-vdf-2": "github:cbartondock/node-binary-vdf"
+  },
+  "name": "steam-ico-fix",
+  "version": "1.0.0",
+  "main": "main.js",
+  "keywords": ["steam"],
+  "author": "kodenamekrak",
+  "license": "ISC",
+  "description": "Fixes steam icon cache files not being present"
+}
