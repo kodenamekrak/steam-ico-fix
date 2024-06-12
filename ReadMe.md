@@ -5,6 +5,8 @@ This fixes an issue where steam does not redownload the icon files after after r
 First install the `imagemagick` package, [nodejs](https://nodejs.org/en) and the script dependencies
 ```
 apt install imagemagick
+git clone https://github.com/kodenamekrak/steam-ico-fix
+cd steam-ico-fix
 npm i
 node .
 ```
