@@ -35,24 +35,27 @@ async function main() {
     for(var app of vdf) {
         const appId = app.entries.appid;
         const icon = app.entries?.common?.icon;
-        const iconHash = app.entries?.common?.clienticon;
+        const isLinux = app.entries?.common?.linuxclienticon != undefined;
+        const iconHash = isLinux ? app.entries?.common?.linuxclienticon : app.entries?.common?.clienticon;
         const name = app.entries?.common?.name;
         if(!iconHash  || !icon || !name || !appId)
             continue;
 
         console.log(`Downloading icon for app ${name} - ${appId} - ${iconHash}`);
 
-        const url = `http://media.steampowered.com/steamcommunity/public/images/apps/${appId}/${icon}.jpg`;
+        let url = `http://media.steampowered.com/steamcommunity/public/images/apps/${appId}/${icon}`;
+        url += isLinux ? ".zip" : ".jpg";
         
         const imageRequest = await fetch(url);
         const imageData = imageRequest.body;
-        const outputFile = path.join(tmpdir(), iconHash + ".ico")
+        const outputFile = path.join(isLinux ? gamesDir : tmpdir(), iconHash + ".ico")
 
         const filestream = fs.createWriteStream(outputFile);
         imageData.pipeTo(new WritableStream({
             write: (chunk) => filestream.write(chunk),
             close: () => {
-                spawn('convert', [outputFile, path.join(gamesDir, iconHash + ".ico")]);
+                if(!isLinux)
+                    spawn('convert', [outputFile, path.join(gamesDir, iconHash + ".ico")]);
             }
         }));
     }
