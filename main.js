@@ -34,7 +34,7 @@ async function main() {
 
     for(var app of vdf) {
         const appId = app.entries.appid;
-        const isLinux = app.entries?.common?.linuxclienticon != undefined;
+        const isLinux = process.platform === 'linux' && app.entries?.common?.linuxclienticon != undefined;
         const iconHash = isLinux ? app.entries?.common?.linuxclienticon : app.entries?.common?.clienticon;
         const name = app.entries?.common?.name;
         if(!iconHash || !name || !appId)
